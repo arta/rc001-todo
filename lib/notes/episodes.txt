@@ -1,0 +1,19 @@
+################################################################################
+8-4-17: ########################################################################
+• 001 Caching with Instance Variables
+  Mar 04, 2007 | 2 minutes | Performance, Caching
+• Learn a quick way to improve performance. Just store the end result of
+  an expensive command in an instance variable!
+
+• Something like:
+  : application_controller.rb:
+      ...
+      def current_user
+        @current_user ||= User.find(session[:user_id])
+      end
+      ...
+
+• Not hand coded anymore, Rails handles automatically:
+  http://guides.rubyonrails.org/caching_with_rails.html#sql-caching
+
+################################################################################
