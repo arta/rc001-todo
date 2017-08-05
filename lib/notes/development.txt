@@ -1,0 +1,52 @@
+################################################################################
+8-5-17: ########################################################################
+• 002 Dynamic find_by Methods
+  Shorten simple finds considerably and improve readability by using
+  the dynamic find_all_by and find_by methods.
+
+• Something like:
+
+    def incomplete
+      @tasks = Task.where( complete: false )
+      # Deprecated, removed:
+      # @tasks = Task.find_all_by_complete(false)
+    end
+
+    def last_incomplete
+      @task = Task.find_by( complete: false )
+      # @task = Task.where( complete: false ).last
+      # @task = Task.order( created_at: :desc ).find_by( complete: false )
+      # Deprecated, removed:
+      # @task = Task.find_by_complete(false, :order => 'created_at DESC')
+    end
+
+• find_all_by_.. and find_by_.. not relevant anymore
+  : replaced with chainable .where(), .order(), scopes ...
+
+• find_by()
+  : if order matters, it must be specified first
+  : but since the last created_at is equivalent with the last id
+    it actually doesn't need to be specified here
+
+################################################################################
+
+
+
+################################################################################
+8-4-17: ########################################################################
+• 001 Caching with Instance Variables
+  Learn a quick way to improve performance. Just store the end result of
+  an expensive command in an instance variable!
+
+• Something like:
+  : application_controller.rb:
+      ...
+      def current_user
+        @current_user ||= User.find(session[:user_id])
+      end
+      ...
+
+• Not hand coded anymore, Rails handles automatically:
+  http://guides.rubyonrails.org/caching_with_rails.html#sql-caching
+
+################################################################################

@@ -45,6 +45,20 @@ class TasksController < ApplicationController
     redirect_to tasks_url, notice: 'Task was destroyed.'
   end
 
+  # GET /tasks/incomplete
+  def incomplete
+    @tasks = Task.where( complete: false )
+    render :index
+  end
+
+  # GET /tasks/last_incomplete
+  def last_incomplete
+    @task = Task.find_by( complete: false )
+    # @task = Task.where( complete: false ).last # max ID ~= last created_at
+    # @task = Task.order( created_at: :desc ).find_by( complete: false )
+    render :show
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
