@@ -9,6 +9,9 @@
 
     $ rails g migration add_project_ref_to_tasks project:references
 
+• Again, .find(), .find_all_by_.. are deprecated, removed, and
+  : replaced by .where()
+
 ################################################################################
 • 002 Dynamic find_by Methods
   Shorten simple finds considerably and improve readability by using
