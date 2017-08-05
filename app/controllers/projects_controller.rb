@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
+    @tasks = Task.where( project_id: @project.id, complete: false )
   end
 
   # GET /projects/new
