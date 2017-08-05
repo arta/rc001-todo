@@ -54,8 +54,6 @@ class TasksController < ApplicationController
   # GET /tasks/last_incomplete
   def last_incomplete
     @task = Task.find_by( complete: false )
-    # @task = Task.where( complete: false ).last # max ID ~= last created_at
-    # @task = Task.order( created_at: :desc ).find_by( complete: false )
     render :show
   end
 
