@@ -1,5 +1,15 @@
 ################################################################################
 8-5-17: ########################################################################
+################################################################################
+• 003 Find Through Association
+  No need to pass foreign keys in find conditions, just do the find through
+  a has_many association.
+
+• Generate migration adding project reference to tasks:
+
+    $ rails g migration add_project_ref_to_tasks project:references
+
+################################################################################
 • 002 Dynamic find_by Methods
   Shorten simple finds considerably and improve readability by using
   the dynamic find_all_by and find_by methods.
